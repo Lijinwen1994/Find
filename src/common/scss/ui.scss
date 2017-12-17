@@ -1,0 +1,51 @@
+@import "./variable";
+
+.cursom-button-block {
+  display: block;
+  border-radius: 200px;
+  height: 40px;
+  background-color: $color-green;
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  line-height: 40px;
+  color: #F9FAFC;
+  transition: .3s all;
+  &:hover {
+    background-color: $color-theme;
+  }
+}
+
+.line {
+  display: inline-block;
+  width: 1px;
+  height: 1.5em;
+  border-left: 1px solid #e7e7e7;
+  vertical-align: middle;
+}
+
+.question_inter_Icon {
+  text-decoration: none;
+  display: inline-block;
+  font-size: $font-large-xxx;
+  color: $color-text-l;
+  padding: 0 10px;
+  i {
+    display: inline-block;
+    font-size: 22px;
+    vertical-align: middle;
+    height: 25px;
+  }
+  em {
+  }
+}
+
+@mixin inputStyle {
+  text-indent: 5px;
+  width: 100%;
+  border: none;
+  background-color: $color-grey-d;
+  &:focus {
+    outline: 1px solid $color-theme;
+  }
+}

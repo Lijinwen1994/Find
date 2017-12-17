@@ -1,0 +1,18 @@
+.fix{
+  zoom: 1;
+  &:after{
+    content: "";
+    display: table;
+    height: 0;
+    clear: both;
+  }
+}
+
+.f_left {
+  float: left
+}
+
+.f_right {
+  float: right;
+}
+

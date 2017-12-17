@@ -1,0 +1,26 @@
+@import "./variable.scss";
+#app {
+  font-family: normal 16px/1.5 PingFang SC,Arial,Hiragino Sans GB,Microsoft YaHei,STHeiti,WenQuanYi Micro Hei,simsun,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,html{
+  margin: 0;
+  padding: 0;
+}
+
+.page-container{
+  width:1200px;
+  margin: 0 auto;
+  display: table;
+  //border:1px solid $color-grey;
+  box-shadow: 0 20px 30px 0px rgba(0, 0, 0, 0.16);
+  padding-top: -1px;
+}
+ul{
+  padding: 0;
+}
+li{
+  list-style: none;
+}

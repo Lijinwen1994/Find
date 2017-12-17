@@ -1,0 +1,468 @@
+{
+  "resumeData": {
+    "name": "马晓蓝",
+    "degree": "专科",
+    "school": "广东农工商职业技术学院",
+    "job": "前端工程师",
+    "age":"21",
+    "projectEx": [
+      {
+        "timeStart": "2015-04-10",
+        "timeEnd": "2015-08-11",
+        "name": "QQ商城",
+        "descride": "QQ商城于2010年3月22日由“QQ会员官方店”升级而来。将此前只有QQ会员才能享受到的低价名牌网购特权向所有QQ用户全面开放，而QQ会员的优惠特权也将进一步升级。2013年3月24日，腾讯电商旗下、业态有些重合的QQ网购和QQ商城将于明日合二为一，新平台将统一以QQ网购的品牌出现"
+      }
+    ],
+    "experienceYear": "1年",
+    "wantSaraly": "5~7k",
+    "videoUrl": "rtmp://120.24.238.2:1935/rtmplive/room",
+    "headImg" :  "../../../common/image/default_headpic.png"
+  },
+  "topicReply": {
+    "result": 1,
+    "data": {
+      "TID": "归属话题TID",
+      "RID": "帖子的id",
+      "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
+      "userName": "这是用户名",
+      "UID": "回复的用户ID",
+      "c_content": "这是回复成功的评论",
+      "c_zanNum": "0",
+      "commentNum": "1",
+      "time": "2010-10-10"
+    }
+  },
+  "topicDetail":{
+    "result": 1,
+    "topic": {
+      "TID": "XXXX",
+      "tags": [
+        {
+          "tag_name": "腾讯科技",
+          "tag_value": "1212"
+        },
+        {
+          "tag_name": "web前端开发",
+          "tag_value": "121"
+        }
+      ],
+      "title": "大家第一份工作工资多少呢？当时怎么生活的呢？",
+      "content" : "我先来吧 第一份工作在石家庄，工资1800。 住在西边一个村子里，一个月好像200，洗澡单加20，周围都拆的乱七八糟了，买一大桶豆瓣酱，晚上下班买馒头和大葱蘸着吃。 后来来北京自己租过一个无窗隔断，转租给我的人说9平米，其实也就4平米，就一张单人床和一个小桌子放笔记本。还记得有一晚下班从百度公司旁等公交，没带伞，一直淋着。。。当时心里好像很落寞。。。 五一放假回家，晚交1天房租，被中介锁了门，短信通知按规定多交2个月违约金，暗示可以私下找他解决。果断叫来同事，砸开门，去同事家合租。。。 是不是很悲惨。。。 最多@三家公司，就调几个大的吧。。。",
+      "views": "浏览量",
+      "UID": "发布话题的用户UID"
+    },
+    "replys":[
+      {
+        "TID": "归属话题TID",
+        "RID": "帖子的id",
+        "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
+        "userName": "这是用户名",
+        "UID": "回复的用户ID",
+        "c_content": "今年，7000，朝九晚五，包吃住，加班另算。",
+        "c_zanNum": "0",
+        "commentNum": "1",
+        "time": "2010-10-10"
+
+      },
+      {
+        "TID": "归属话题TID",
+        "RID": "帖子的id",
+        "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
+        "userName": "这是用户名",
+        "UID": "回复的用户ID",
+        "c_content": "上海 2006年 6.4K",
+        "c_zanNum": "0",
+        "commentNum": "1",
+        "time": "2010-10-10"
+      }
+    ]
+  },
+  "success": {
+    "result": 1
+  },
+  "replySuccess": {
+    "result": 1,
+    "data": [
+      {
+        "TID": "归属话题TID",
+        "RID": "帖子的id",
+        "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
+        "userName": "这是用户名",
+        "UID": "回复的用户ID",
+        "c_content": "这是评论成功返回的内容~~",
+        "c_zanNum": "0",
+        "time": "2010-10-10"
+      }
+    ]
+  },
+  "replyComment": {
+    "result": 1,
+    "data": [
+      {
+        "TID": "归属话题TID",
+        "RID": "帖子的id",
+        "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
+        "userName": "这是用户名1",
+        "UID": "回复的用户ID",
+        "c_content": "这里是评论的内容的~~",
+        "c_zanNum": "2",
+        "time": "时间"
+      },
+      {
+        "TID": "归属话题TID",
+        "RID": "帖子的id",
+        "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
+        "userName": "这是用户名2",
+        "UID": "回复的用户ID",
+        "c_content": "这里是评论的内容的~~",
+        "c_zanNum": "2",
+        "time": "时间"
+      },
+      {
+        "TID": "归属话题TID",
+        "RID": "帖子的id",
+        "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
+        "userName": "这是用户名3",
+        "UID": "回复的用户ID",
+        "c_content": "这里是评论的内容的~~",
+        "c_zanNum": "2",
+        "time": "时间"
+      }
+    ]
+  },
+  "topicList_all": {
+    "result": 1,
+    "data": [
+      {
+        "TID": "2121212",
+        "topicFrom": "职业发展【对应的第一个标签，因为有3个标签，列表部分只显示发布时的第一个标签】",
+        "tagValue": "100",
+        "userNameOfOwn": "提问者（话题发布者）的用户名",
+        "UIDOfOwn": "提问者的ID",
+        "title": "想请问一下上海总部的战略规划岗怎么样？【提问内容】",
+        "replyNum": "2【这个话题回复数量】",
+        "RID": "这条回复的ID",
+        "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
+        "userNameOfReply": "这是最佳（赞最多或者最新）回复者用户名",
+        "UIDOfReply": "最佳回复者的ID",
+        "replyContent": "研究生薪资待遇在德邦同类入职的校招生是不错的啦；具体要跟HR谈，个人能力突出会有不同的薪资待遇",
+        "time": "2017-09-23 23:02 【回复时间】",
+        "commentNum": "1",
+        "c_zanNum": "3"
+      },
+      {
+        "TID": "31333535",
+        "topicFrom": "职业发展",
+        "tagValue": "100",
+        "userNameOfOwn": "提问者的用户名",
+        "UIDOfOwn": "提问者的ID",
+        "title": "想请问一下上海总部的战略规划岗怎么样？",
+        "replyNum": "2",
+        "RID": "这条回复的ID",
+        "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
+        "userNameOfReply": "这是回复者用户名",
+        "UIDOfReply": "最佳回复者的ID",
+        "replyContent": "研究生薪资待遇在德邦同类入职的校招生是不错的啦；具体要跟HR谈，个人能力突出会有不同的薪资待遇",
+        "time": "2017-09-23 23:02 ",
+        "commentNum": "1",
+        "c_zanNum": "3"
+      }
+    ]
+  },
+  "topicList_tag": {
+    "result": 1,
+    "data": [
+      {
+        "TID": "2121212",
+        "topicFrom": "tag标签",
+        "tagValue": "100",
+        "userNameOfOwn": "提问者（话题发布者）的用户名",
+        "UIDOfOwn": "提问者的ID",
+        "title": "这是tag话题的标题",
+        "replyNum": "2【这个话题回复数量】",
+        "RID": "这条回复的ID",
+        "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
+        "userNameOfReply": "这是最佳（赞最多或者最新）回复者用户名",
+        "UIDOfReply": "最佳回复者的ID",
+        "replyContent": "这是tag话题的回复，这是tag话题的回复，这是tag话题的回复，",
+        "time": "2017-09-23 23:02 【回复时间】",
+        "commentNum": "1",
+        "c_zanNum": "3"
+      },
+      {
+        "TID": "31333535",
+        "topicFrom": "tag标签",
+        "tagValue": "100",
+        "userNameOfOwn": "提问者的用户名",
+        "UIDOfOwn": "提问者的ID",
+        "title": "想请问一下上海总部的战略规划岗怎么样？",
+        "replyNum": "2",
+        "RID": "这条回复的ID",
+        "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
+        "userNameOfReply": "这是回复者用户名",
+        "UIDOfReply": "最佳回复者的ID",
+        "replyContent": "这是tag话题的回复，这是tag话题的回复，这是tag话题的回复，",
+        "time": "2017-09-23 23:02 ",
+        "commentNum": "1",
+        "c_zanNum": "3"
+      }
+    ]
+  },
+  "searchTag": {
+    "result": 1,
+    "data": [
+      {
+        "tag_name": "腾讯",
+        "tag_value": "222",
+        "tag_type": "公司"
+      },
+      {
+        "tag_name": "腾讯科技",
+        "tag_value": "223",
+        "tag_type": "公司"
+      },
+      {
+        "tag_name": "腾讯广州微信事业群",
+        "tag_value": "224",
+        "tag_type": "公司"
+      }
+    ]
+  },
+  "login": {
+    "result": 1,
+    "name": "liwen",
+    "uid": "1111",
+    "type": "1",
+    "resumeSign": "1",
+    "companyDataSign": "2"
+  },
+  "workerInfo": [
+    {
+      "img": "http://upload.85781.com/info/2016/0813/145437_845454_3090391.jpg",
+      "name": "宋歌",
+      "job": "安卓开发工程师",
+      "school": "华南理工大学",
+      "profe": "信息与计算机科学",
+      "experience": "2年",
+      "rtmp": "rtmp://live.hkstv.hk.lxdns.com/live/hks"
+    },
+    {
+      "img": "http://img5.duitang.com/uploads/item/201602/12/20160212193635_3LRTv.jpeg",
+      "name": "晴川",
+      "job": "前端开发工程师",
+      "school": "北京大学",
+      "profe": "软件工程",
+      "experience": "4年",
+      "rtmp": "rtmp://live.hkstv.hk.lxdns.com/live/hks"
+    },
+    {
+      "img": "http://image.huajiao.com/b0757a0a59ea703ea8b10c143baf27e8.jpg",
+      "name": "马晓",
+      "job": "UI设计师",
+      "school": "中央美术大学",
+      "profe": "视觉传达",
+      "experience": "1年",
+      "rtmp": "rtmp://live.hkstv.hk.lxdns.com/live/hks"
+    },
+    {
+      "img": "http://photocdn.sohu.com/20150803/mp25545306_1438592988586_2.jpeg",
+      "name": "洪熙",
+      "job": "ios开发工程师",
+      "school": "天津大学",
+      "profe": "土木工程",
+      "experience": "3年",
+      "rtmp": "rtmp://live.hkstv.hk.lxdns.com/live/hks"
+    },
+    {
+      "img": "http://img1.oss.ifensi.com/2016/0721/20160721121422699.jpg",
+      "name": "胡歌",
+      "job": "算法挖掘",
+      "school": "河南大学",
+      "profe": "土木工程",
+      "experience": "3年",
+      "rtmp": "rtmp://live.hkstv.hk.lxdns.com/live/hks"
+    },
+    {
+      "img": "http://upload.85781.com/info/2016/0813/145437_845454_3090391.jpg",
+      "name": "宋歌",
+      "job": "安卓开发工程师",
+      "school": "华南理工大学",
+      "profe": "信息与计算机科学",
+      "experience": "2年",
+      "rtmp": "rtmp://www.planeta-online.tv:1936/live/channel_4"
+    },
+    {
+      "img": "http://upload.85781.com/info/2016/0813/145437_845454_3090391.jpg",
+      "name": "宋歌",
+      "job": "安卓开发工程师",
+      "school": "华南理工大学",
+      "profe": "信息与计算机科学",
+      "experience": "2年",
+      "rtmp": "rtmp://live.hkstv.hk.lxdns.com/live/hks"
+    },
+    {
+      "img": "http://img5.duitang.com/uploads/item/201602/12/20160212193635_3LRTv.jpeg",
+      "name": "晴川",
+      "job": "前端开发工程师",
+      "school": "北京大学",
+      "profe": "软件工程",
+      "experience": "4年",
+      "rtmp": "rtmp://www.planeta-online.tv:1936/live/channel_4"
+    },
+    {
+      "img": "http://image.huajiao.com/b0757a0a59ea703ea8b10c143baf27e8.jpg",
+      "name": "马晓",
+      "job": "UI设计师",
+      "school": "中央美术大学",
+      "profe": "视觉传达",
+      "experience": "1年",
+      "rtmp": "rtmp://live.hkstv.hk.lxdns.com/live/hks"
+    },
+    {
+      "img": "http://photocdn.sohu.com/20150803/mp25545306_1438592988586_2.jpeg",
+      "name": "洪熙",
+      "job": "ios开发工程师",
+      "school": "天津大学",
+      "profe": "土木工程",
+      "experience": "3年",
+      "rtmp": "rtmp://www.planeta-online.tv:1936/live/channel_4"
+    },
+    {
+      "img": "http://img1.oss.ifensi.com/2016/0721/20160721121422699.jpg",
+      "name": "胡歌",
+      "job": "算法挖掘",
+      "school": "河南大学",
+      "profe": "土木工程",
+      "experience": "3年",
+      "rtmp": "rtmp://live.hkstv.hk.lxdns.com/live/hks"
+    },
+    {
+      "img": "http://upload.85781.com/info/2016/0813/145437_845454_3090391.jpg",
+      "name": "宋歌",
+      "job": "安卓开发工程师",
+      "school": "华南理工大学",
+      "profe": "信息与计算机科学",
+      "experience": "2年",
+      "rtmp": "rtmp://www.planeta-online.tv:1936/live/channel_4"
+    },
+    {
+      "img": "http://upload.85781.com/info/2016/0813/145437_845454_3090391.jpg",
+      "name": "宋歌",
+      "job": "安卓开发工程师",
+      "school": "华南理工大学",
+      "profe": "信息与计算机科学",
+      "experience": "2年",
+      "rtmp": "rtmp://live.hkstv.hk.lxdns.com/live/hks"
+    },
+    {
+      "img": "http://img5.duitang.com/uploads/item/201602/12/20160212193635_3LRTv.jpeg",
+      "name": "晴川",
+      "job": "前端开发工程师",
+      "school": "北京大学",
+      "profe": "软件工程",
+      "experience": "4年",
+      "rtmp": "rtmp://www.planeta-online.tv:1936/live/channel_4"
+    },
+    {
+      "img": "http://image.huajiao.com/b0757a0a59ea703ea8b10c143baf27e8.jpg",
+      "name": "马晓",
+      "job": "UI设计师",
+      "school": "中央美术大学",
+      "profe": "视觉传达",
+      "experience": "1年",
+      "rtmp": "rtmp://live.hkstv.hk.lxdns.com/live/hks"
+    },
+    {
+      "img": "http://photocdn.sohu.com/20150803/mp25545306_1438592988586_2.jpeg",
+      "name": "洪熙",
+      "job": "ios开发工程师",
+      "school": "天津大学",
+      "profe": "土木工程",
+      "experience": "3年",
+      "rtmp": "rtmp://www.planeta-online.tv:1936/live/channel_4"
+    },
+    {
+      "img": "http://img1.oss.ifensi.com/2016/0721/20160721121422699.jpg",
+      "name": "胡歌",
+      "job": "算法挖掘",
+      "school": "河南大学",
+      "profe": "土木工程",
+      "experience": "3年",
+      "rtmp": "rtmp://live.hkstv.hk.lxdns.com/live/hks"
+    },
+    {
+      "img": "http://upload.85781.com/info/2016/0813/145437_845454_3090391.jpg",
+      "name": "宋歌",
+      "job": "安卓开发工程师",
+      "school": "华南理工大学",
+      "profe": "信息与计算机科学",
+      "experience": "2年",
+      "rtmp": "rtmp://www.planeta-online.tv:1936/live/channel_4"
+    }
+  ],
+  "companyListData": [
+    {
+      "name": "华为aaa",
+      "tag_value": "10010",
+      "tag_name": "华为",
+      "foundTime": "2008-10-10",
+      "foundFund": "1亿元",
+      "financingStage": "不需要融资",
+      "isListed": 2,
+      "peopleNumber": "10000人以上",
+      "siteProv": "广东",
+      "siteCity": "广州",
+      "point": {
+        "lat": "39.914850",
+        "lng": "116.403765"
+      },
+      "address": "北京路十里长街XX号",
+      "videoUrl": "rtmp://live.hkstv.hk.lxdns.com/live/hks",
+      "intro": "华为是全球领先的信息与通信解决方案供应商。我们围绕客户的需求持续创新，与合作伙伴开放合作，在电信网络、企业网络、消费者和云计算等领域构筑了端到端的解决方案优势。我们致力于为电信运营商、企业和消费者等提供有竞争力的 ICT 解决方案和服务，持续提升客户体验，为客户创造最大价值。目前，华为的产品和解决方案已经应用于 140 多个国家，服务全球 1/3的人口。",
+      "culture": "企业文化/口号，",
+      "headImg": "https://img.kanzhun.com/images/logo/20150418/0d2dbe2a1fb130c913c9a3d6e72296ef.jpg"
+    },
+    {
+      "name": "华为",
+      "tag_value": "10010",
+      "tag_name": "华为",
+      "foundTime": "2008-10-10",
+      "foundFund": "1亿元",
+      "financingStage": "不需要融资",
+      "isListed": 2,
+      "peopleNumber": "10000人以上",
+      "siteProv": "广东",
+      "siteCity": "广州",
+      "point": {
+        "lat": "39.914850",
+        "lng": "116.403765"
+      },
+      "address": "北京路十里长街XX号",
+      "videoUrl": "rtmp://live.hkstv.hk.lxdns.com/live/hks",
+      "intro": "华为是全球领先的信息与通信解决方案供应商。我们围绕客户的需求持续创新，与合作伙伴开放合作，在电信网络、企业网络、消费者和云计算等领域构筑了端到端的解决方案优势。我们致力于为电信运营商、企业和消费者等提供有竞争力的 ICT 解决方案和服务，持续提升客户体验，为客户创造最大价值。目前，华为的产品和解决方案已经应用于 140 多个国家，服务全球 1/3的人口。",
+      "culture": "企业文化/口号，",
+      "headImg": "https://img.kanzhun.com/images/logo/20150418/0d2dbe2a1fb130c913c9a3d6e72296ef.jpg"
+    },
+    {
+      "name": "华为",
+      "tag_value": "10010",
+      "tag_name": "华为",
+      "foundTime": "2008-10-10",
+      "foundFund": "1亿元",
+      "financingStage": "不需要融资",
+      "isListed": 2,
+      "peopleNumber": "10000人以上",
+      "siteProv": "广东",
+      "siteCity": "广州",
+      "point": {
+        "lat": "39.914850",
+        "lng": "116.403765"
+      },
+      "address": "北京路十里长街XX号",
+      "videoUrl": "rtmp://live.hkstv.hk.lxdns.com/live/hks",
+      "intro": "华为是全球领先的信息与通信解决方案供应商。我们围绕客户的需求持续创新，与合作伙伴开放合作，在电信网络、企业网络、消费者和云计算等领域构筑了端到端的解决方案优势。我们致力于为电信运营商、企业和消费者等提供有竞争力的 ICT 解决方案和服务，持续提升客户体验，为客户创造最大价值。目前，华为的产品和解决方案已经应用于 140 多个国家，服务全球 1/3的人口。",
+      "culture": "企业文化/口号，",
+      "headImg": "https://img.kanzhun.com/images/logo/20150418/0d2dbe2a1fb130c913c9a3d6e72296ef.jpg"
+    }
+  ]
+}
