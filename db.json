@@ -135,37 +135,57 @@
     "data": [
       {
         "TID": "2121212",
-        "topicFrom": "职业发展【对应的第一个标签，因为有3个标签，列表部分只显示发布时的第一个标签】",
-        "tagValue": "100",
+        "tags": [
+          {
+            "tag_name": "职业发展",
+            "tag_value": "100"
+          },
+          {
+            "tag_name": "腾讯有限公司",
+            "tag_value": "101"
+          }
+        ],
         "userNameOfOwn": "提问者（话题发布者）的用户名",
         "UIDOfOwn": "提问者的ID",
         "title": "想请问一下上海总部的战略规划岗怎么样？【提问内容】",
         "replyNum": "2【这个话题回复数量】",
-        "RID": "这条回复的ID",
-        "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
-        "userNameOfReply": "这是最佳（赞最多或者最新）回复者用户名",
-        "UIDOfReply": "最佳回复者的ID",
-        "replyContent": "研究生薪资待遇在德邦同类入职的校招生是不错的啦；具体要跟HR谈，个人能力突出会有不同的薪资待遇",
-        "time": "2017-09-23 23:02 【回复时间】",
-        "commentNum": "1",
-        "c_zanNum": "3"
+        "replyData": {
+          "RID": "这条回复的ID",
+          "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
+          "userNameOfReply": "这是最佳（赞最多或者最新）回复者用户名",
+          "UIDOfReply": "最佳回复者的ID",
+          "replyContent": "研究生薪资待遇在德邦同类入职的校招生是不错的啦；具体要跟HR谈，个人能力突出会有不同的薪资待遇",
+          "time": "2017-09-23 23:02 【回复时间】",
+          "commentNum": "1",
+          "c_zanNum": "3"
+        }
       },
       {
         "TID": "31333535",
-        "topicFrom": "职业发展",
-        "tagValue": "100",
+        "tags": [
+          {
+            "tag_name": "职业发展",
+            "tag_value": "100"
+          },
+          {
+            "tag_name": "腾讯有限公司",
+            "tag_value": "101"
+          }
+        ],
         "userNameOfOwn": "提问者的用户名",
         "UIDOfOwn": "提问者的ID",
         "title": "想请问一下上海总部的战略规划岗怎么样？",
         "replyNum": "2",
-        "RID": "这条回复的ID",
-        "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
-        "userNameOfReply": "这是回复者用户名",
-        "UIDOfReply": "最佳回复者的ID",
-        "replyContent": "研究生薪资待遇在德邦同类入职的校招生是不错的啦；具体要跟HR谈，个人能力突出会有不同的薪资待遇",
-        "time": "2017-09-23 23:02 ",
-        "commentNum": "1",
-        "c_zanNum": "3"
+        "replyData": {
+          "RID": "这条回复的ID",
+          "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
+          "userNameOfReply": "这是回复者用户名",
+          "UIDOfReply": "最佳回复者的ID",
+          "replyContent": "研究生薪资待遇在德邦同类入职的校招生是不错的啦；具体要跟HR谈，个人能力突出会有不同的薪资待遇",
+          "time": "2017-09-23 23:02 ",
+          "commentNum": "1",
+          "c_zanNum": "3"
+        }
       }
     ]
   },
@@ -174,37 +194,57 @@
     "data": [
       {
         "TID": "2121212",
-        "topicFrom": "tag标签",
-        "tagValue": "100",
+        "tags": [
+          {
+            "tag_name": "职业发展",
+            "tag_value": "100"
+          },
+          {
+            "tag_name": "腾讯有限公司",
+            "tag_value": "101"
+          }
+        ],
         "userNameOfOwn": "提问者（话题发布者）的用户名",
         "UIDOfOwn": "提问者的ID",
         "title": "这是tag话题的标题",
         "replyNum": "2【这个话题回复数量】",
-        "RID": "这条回复的ID",
-        "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
-        "userNameOfReply": "这是最佳（赞最多或者最新）回复者用户名",
-        "UIDOfReply": "最佳回复者的ID",
-        "replyContent": "这是tag话题的回复，这是tag话题的回复，这是tag话题的回复，",
-        "time": "2017-09-23 23:02 【回复时间】",
-        "commentNum": "1",
-        "c_zanNum": "3"
+        "replyData": {
+          "RID": "这条回复的ID",
+          "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
+          "userNameOfReply": "这是回复者用户名",
+          "UIDOfReply": "最佳回复者的ID",
+          "replyContent": "研究生薪资待遇在德邦同类入职的校招生是不错的啦；具体要跟HR谈，个人能力突出会有不同的薪资待遇",
+          "time": "2017-09-23 23:02 ",
+          "commentNum": "1",
+          "c_zanNum": "3"
+        }
       },
       {
         "TID": "31333535",
-        "topicFrom": "tag标签",
-        "tagValue": "100",
+        "tags": [
+          {
+            "tag_name": "职业发展",
+            "tag_value": "100"
+          },
+          {
+            "tag_name": "腾讯有限公司",
+            "tag_value": "101"
+          }
+        ],
         "userNameOfOwn": "提问者的用户名",
         "UIDOfOwn": "提问者的ID",
         "title": "想请问一下上海总部的战略规划岗怎么样？",
         "replyNum": "2",
-        "RID": "这条回复的ID",
-        "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
-        "userNameOfReply": "这是回复者用户名",
-        "UIDOfReply": "最佳回复者的ID",
-        "replyContent": "这是tag话题的回复，这是tag话题的回复，这是tag话题的回复，",
-        "time": "2017-09-23 23:02 ",
-        "commentNum": "1",
-        "c_zanNum": "3"
+        "replyData": {
+          "RID": "这条回复的ID",
+          "userAvatar": "https://img.kanzhun.com/images/activity/20170502/d7a2917a29514e85e2a14b721f2b11d3.png",
+          "userNameOfReply": "这是回复者用户名",
+          "UIDOfReply": "最佳回复者的ID",
+          "replyContent": "研究生薪资待遇在德邦同类入职的校招生是不错的啦；具体要跟HR谈，个人能力突出会有不同的薪资待遇",
+          "time": "2017-09-23 23:02 ",
+          "commentNum": "1",
+          "c_zanNum": "3"
+        }
       }
     ]
   },
@@ -353,51 +393,6 @@
       "profe": "信息与计算机科学",
       "experience": "2年",
       "rtmp": "rtmp://live.hkstv.hk.lxdns.com/live/hks"
-    },
-    {
-      "img": "http://img5.duitang.com/uploads/item/201602/12/20160212193635_3LRTv.jpeg",
-      "name": "晴川",
-      "job": "前端开发工程师",
-      "school": "北京大学",
-      "profe": "软件工程",
-      "experience": "4年",
-      "rtmp": "rtmp://www.planeta-online.tv:1936/live/channel_4"
-    },
-    {
-      "img": "http://image.huajiao.com/b0757a0a59ea703ea8b10c143baf27e8.jpg",
-      "name": "马晓",
-      "job": "UI设计师",
-      "school": "中央美术大学",
-      "profe": "视觉传达",
-      "experience": "1年",
-      "rtmp": "rtmp://live.hkstv.hk.lxdns.com/live/hks"
-    },
-    {
-      "img": "http://photocdn.sohu.com/20150803/mp25545306_1438592988586_2.jpeg",
-      "name": "洪熙",
-      "job": "ios开发工程师",
-      "school": "天津大学",
-      "profe": "土木工程",
-      "experience": "3年",
-      "rtmp": "rtmp://www.planeta-online.tv:1936/live/channel_4"
-    },
-    {
-      "img": "http://img1.oss.ifensi.com/2016/0721/20160721121422699.jpg",
-      "name": "胡歌",
-      "job": "算法挖掘",
-      "school": "河南大学",
-      "profe": "土木工程",
-      "experience": "3年",
-      "rtmp": "rtmp://live.hkstv.hk.lxdns.com/live/hks"
-    },
-    {
-      "img": "http://upload.85781.com/info/2016/0813/145437_845454_3090391.jpg",
-      "name": "宋歌",
-      "job": "安卓开发工程师",
-      "school": "华南理工大学",
-      "profe": "信息与计算机科学",
-      "experience": "2年",
-      "rtmp": "rtmp://www.planeta-online.tv:1936/live/channel_4"
     }
   ],
   "companyListData": [

@@ -1,15 +1,19 @@
 <template>
+  <!--列表滚动加载模块-->
   <my-lazy-load-info
     :backendAddress="url_List"
     :loadNumber="load_number"
     @getDataSuccess="addData"
     :dataMode="dataMode"
     ref="lazy"
-
   >
+    <!--模板-->
     <template v-for="(item, index) in questionsList">
-      <com_wenba-index :datas="item" :index="index" :showFrom="false"> </com_wenba-index>
+      <!--话题和最多赞评论模板 开始-->
+      <com_topic-and-reply :datas="item" :index="index" :showFrom="false"> </com_topic-and-reply>
+      <!--话题和最多赞评论模板 结束-->
     </template>
+
   </my-lazy-load-info>
 </template>
 
@@ -17,13 +21,13 @@
   import myLazyLoadInfo from '../../../base/myDataLazyLoading/myDataLazyLoading.vue';
   import {EVERY_LOAD_NUMBER} from "../../../common/js/config";
   import {url_questionListForTag} from '../../../api/config';
-  import Com_wenbaIndex from '../template/com_wenbaIndex.vue';
+  import Com_topicAndReply from '../template/com_topicAndReply.vue';
   import {thinArr} from '../../../common/js/tool';
 
   export default {
     components: {
       myLazyLoadInfo,
-      Com_wenbaIndex
+      Com_topicAndReply
     },
     props: {
       dataMode: {

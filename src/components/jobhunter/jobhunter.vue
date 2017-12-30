@@ -6,49 +6,44 @@
         <p>求职者</p>
       </my-title>
       <template v-for='(item, index) in jobHunterData'>
-        <div class="leftpage" v-if='judge(index) == 1'>
-          <div class="img-wrap inline-block" v-bind:style="{backgroundImage: 'url(' + item.img + ')'}">
+        <div class="leftpage" v-if='judge(index) == 1' @click="clickResume(item)">
+          <div class="img-wrap inline-block" v-bind:style="{backgroundImage: 'url(' + item.headImg + ')'}">
           </div>
-          <!--<lazyBackground
-                      :image-source='item.img'
-                      image-class='img-wrap inline-block'
-                      background-size='cover'
-                      >
-                      </lazyBackground>-->
-
           <div class="inline-block">
             <div class="info-detail">
               <div class="name">{{item.name}}</div>
               <div>{{item.job}}</div>
               <div>{{item.school}}</div>
-              <div>{{item.degree}}</div>
-              <div>{{item.experienceYear}}</div>
+              <div>{{item.degree | toStringDegree}}</div>
+              <div>{{item.experienceYear}}年工作经验</div>
             </div>
+
             <div class="info-video" @click='onlive(index)'>
               <i class="iconfont icon-shipin icon-class"></i>
               <!--<icon name="video2" scale="8" class='icon-class'></icon>-->
             </div>
           </div>
         </div>
-        <div class="rightpage" v-if='judge(index) == 2'>
+        <div class="rightpage" v-if='judge(index) == 2' @click="clickResume(item)">
           <div class="inline-block">
             <div class="info-detail">
               <div class="name">{{item.name}}</div>
               <div>{{item.job}}</div>
               <div>{{item.school}}</div>
-              <div>{{item.degree}}</div>
-              <div>{{item.experienceYear}}</div>
+              <div>{{item.degree | toStringDegree}}学历</div>
+              <div>{{item.experienceYear}}年工作经验</div>
             </div>
             <div class="info-video" @click='onlive(index)'>
               <i class="iconfont icon-shipin icon-class"></i>
               <!--<icon name="video2" scale="8" class='icon-class'></icon>-->
             </div>
           </div>
-          <div class="img-wrap inline-block" v-bind:style="{backgroundImage: 'url(' + item.img + ')'}">
+          <div class="img-wrap inline-block" v-bind:style="{backgroundImage: 'url(' + item.headImg + ')'}">
           </div>
         </div>
       </template>
 
+      <!--引入ckplayer播放器-->
       <el-dialog
         :title="liveTitle"
         :visible="ckVisible"
@@ -71,9 +66,10 @@
 </template>
 
 <script>
-  import {getJobhunterData} from '../../api/getJobhunterData';
+//  import {getJobhunterData} from '../../api/getJobhunterData';
   import MyTitle from '../../base/myTitle/myTitle.vue'
   import ckplayer from '../../base/ckplayer/ckplayer.vue';
+import {ALREADY} from "../../common/js/config";
   //import VueLazyBackgroundImage from 'vue-lazy-background-images';
   //Vue.component('lazy-background', VueLazyBackgroundImage)
   export default {
@@ -81,6 +77,18 @@
       MyTitle,
       ckplayer
 
+    },
+    filters:{
+      toStringDegree(value) {
+        let degreeArr = [0,'初中','高中','大专','本科','研究生','博士'];
+        return  value = degreeArr[Number(value)]
+      }
+    },
+    props: {
+      jobHunterData: {
+        required: true,
+        type: Array
+      }
     },
     data() {
       return {
@@ -92,13 +100,17 @@
         ckVisible: false,
         rtmpUrl: '',
         liveTitle: '',
-        jobHunterData: {},
+//        jobHunterData: {},
         screenWdith: window.innerWidth * 0.5,
         screenHeight: window.innerHeight * 0.5
       }
     },
     computed: {},
     methods: {
+      clickResume(resumeData) {
+        sessionStorage.setItem('showResume',JSON.stringify(resumeData))
+        this.$router.push('/resumeShow');
+      },
       createFlagArr() {
         for (let i = 0; i < this.FlagMaximun; i++) {
           this.leftCount += 1;
@@ -139,18 +151,19 @@
         this.ckVisible = false
       },
 
-      //获得数据。
-      _getData() {
-        getJobhunterData().then((res) => {
-          this.jobHunterData = res;
-          console.log(res)
-        })
-      }
+//      //获得数据。
+//      _getData() {
+//        getJobhunterData().then((res) => {
+//          console.log(res);
+//          this.jobHunterData = res;
+//
+//        })
+//      }
     },
     created() {
-      this.$nextTick(() => {
-        this._getData()
-      })
+//      this.$nextTick(() => {
+//        this._getData()
+//      })
 
     },
     mounted() {

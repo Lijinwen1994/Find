@@ -3,15 +3,20 @@ import {url_searchTag,
   url_askQuestionSubmit,
   url_questionListForWenba,
   url_commentOnZan,
-  url_replyComment,
-  url_sendReplyComment,
+  url_getSecondaryReply,
+  url_sendSecondaryReply,
   url_questionDetail,
-  url_topicReply
+  url_sendTopicReply,
+  url_getTagMsg
 } from './config'
 
-
+/**
+ * [function 搜索标签]
+ * @param [string] tagStr [输入的标签字符串]
+ * @return [Promise object] data [result: 1,  q]
+ * */
 export function getSearchTag(tagStr) {
-  tagStr = encodeURIComponent(encodeURIComponent(tagStr));
+  tagStr = encodeURIComponent(tagStr);
   return vue.$http.get(`${url_searchTag}?TagStr=${tagStr}`)
     .then(function (res) {
       return Promise.resolve(res.data)
@@ -28,13 +33,16 @@ export function sendQuestion(params) {
   })
 }
 
-export function getQuestionList(getIndex) {
-  return vue.$http.get(url_questionListForWenba).then(function (res) {
-    return Promise.resolve(res.data)
-  }).catch(function (err) {
-    return Promise.reject(err)
-  })
-}
+/**
+ * 请求放在了我的滚动加载插件中
+ * */
+// export function getQuestionList(getIndex) {
+//   return vue.$http.get(url_questionListForWenba).then(function (res) {
+//     return Promise.resolve(res.data)
+//   }).catch(function (err) {
+//     return Promise.reject(err)
+//   })
+// }
 
 export function sendOnZan(params) {
   return vue.$http.get(url_commentOnZan,{
@@ -47,9 +55,9 @@ export function sendOnZan(params) {
 }
 
 
-//获取回复下的评论
-export function getReplyComment(params) {
-  return vue.$http.get(url_replyComment,{
+//获取二级评论
+export function getSecondaryReply(params) {
+  return vue.$http.get(url_getSecondaryReply,{
     params
   }).then(function (res) {
     return Promise.resolve(res.data)
@@ -58,11 +66,11 @@ export function getReplyComment(params) {
   })
 }
 
-/** 发送评论
+/** 发送评论（二级评论)
  * 数据： RID, UIDOfReply, operaUID, content
  * **/
-export function sendReplyComment(params) {
-  return vue.$http.get(url_sendReplyComment,{
+export function sendSecondaryReply(params) {
+  return vue.$http.get(url_sendSecondaryReply,{
     params
   }).then(function (res) {
     return Promise.resolve(res.data)
@@ -84,12 +92,26 @@ export function getQuestionDetail(params) {
   })
 }
 
-/** 发送话题的评论
+/** 发送话题的评论(一级评论)
  *  数据： TID, operaUID, content
  * */
 export function sendTopicReply(params) {
-  return vue.$http.get(url_topicReply,{
+  return vue.$http.post(url_sendTopicReply,{
     params
+  }).then(function (res) {
+    return Promise.resolve(res.data)
+  }).catch(function (err) {
+    return Promise.reject(err)
+  })
+}
+
+/**
+ * [获取标签的信息]
+ * @param tag_value
+ */
+export function getTagMsg(tag_value) {
+  return vue.$http.get(url_getTagMsg,{
+    params:{tag_value:tag_value}
   }).then(function (res) {
     return Promise.resolve(res.data)
   }).catch(function (err) {

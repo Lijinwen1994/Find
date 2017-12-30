@@ -2,7 +2,7 @@
   <!--这是评论的输入框，被多个组件引用-->
   <dl class="fix">
     <dt class="f_left">
-      <img v-if="hasImg" src="https://img.kanzhun.com/images/avatar/20171105/e7845fac3d35523715600f365716629f.jpg" alt="">
+      回复评论
     </dt>
     <dd>
       <div class="text_input">
@@ -77,6 +77,10 @@
         }
         this.$emit('onSubmit', this.inputValue);
         this.$emit('standbySubmit');
+      },
+      clearInput() {
+        this.inputValue = '';
+        this.controlVis = false;
       }
     }
   }
@@ -87,7 +91,7 @@
   @import "../../../common/scss/ui";
   dl{
     dt{
-
+      line-height: 41px;
       img{
         width:40px;
         height:40px;

@@ -1,13 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import CompanyList from 'components/company/company-list/company-list'
-// import JobHunter from '../components/jobhunter/jobhunter'
-// import CompanyPage from "../components/company/company-page/company-page.vue"
-// import CompanyFound from '../components/company/company-found/cpmpany-found.vue'
-// import Resume from '../components/resume/resume/resume.vue';
-// import Wenba from '../components/wenba/wenba.vue'
-// import QuestionList from '../components/wenba/page/listPage.vue'
-// import QuestionDetail from '../components/wenba/page/detail.vue'
 
 const CompanyList = () => import('components/company/company-list/company-list');
 const JobHunter = () => import('../components/jobhunter/jobhunter');
@@ -17,24 +9,29 @@ const Resume = () => import('../components/resume/resume/resume.vue');
 const Wenba = () => import('../components/wenba/wenba.vue');
 const QuestionList = () => import('../components/wenba/page/listPage.vue');
 const QuestionDetail = () => import('../components/wenba/page/detail.vue');
-
+const WorkerIndex = () => import('../components/jobhunter/workerIndex.vue');
+const ShowResume = () => import('../components/resume/resume-show/resume-show.vue');
 Vue.use(Router)
 
 export default new Router({
-  mode:'history',
+  // mode:'history',
   routes: [
     {
       path: '/',
       name: 'job',
-      component: JobHunter
+      component: WorkerIndex
     },
     {
       path: '/company.list',
       component: CompanyList
     },
     {
-      path: '/jobhunter',
-      component: JobHunter
+      path: '/workerindex',
+      component: WorkerIndex
+    },
+    {
+      path: '/resumeShow',
+      component:ShowResume
     },
     {
       path: '/company.page',

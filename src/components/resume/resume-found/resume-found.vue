@@ -50,16 +50,16 @@
         </div>
       </div>
       <div class="ex">
-        <h3>视频上传</h3>
-        <el-upload
-          class="upload-video"
-          action="./php/videoLoad.php"
-          :on-preview="handlePreview"
-          :on-remove="handleRemove"
-          :data.String='loginUserInfo.uid'>
-          <el-button size="small" type="primary">点击上传</el-button>
-          <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-        </el-upload>
+        <!--<h3>视频上传</h3>-->
+        <!--<el-upload-->
+          <!--class="upload-video"-->
+          <!--action="./php/videoLoad.php"-->
+          <!--:on-preview="handlePreview"-->
+          <!--:on-remove="handleRemove"-->
+          <!--:data='videoParam'>-->
+          <!--<el-button size="small" type="primary">点击上传</el-button>-->
+          <!--<div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>-->
+        <!--</el-upload>-->
         <div class="wrap">
           <el-form :model='formData' label-width='70px'>
             <h3 class='inline'>项目经历</h3>
@@ -97,9 +97,14 @@
           </el-form>
         </div>
       </div>
+      <div v-if="ComFormData"></div>
     </div>
 
-    <head-img-load  v-if="loadVis" @offLoadImg="onImgLoad">	</head-img-load>
+    <head-img-load
+      v-if="loadVis"
+      @offLoadImg="onImgLoad"
+      target="personal">
+    </head-img-load>
   </div>
 
 </template>
@@ -108,13 +113,24 @@
   import experience from '../resume-experience/resume-experience.vue'
   import headImgLoad from '../../../base/headImgLoad/headImgLoad.vue'
   import vueStar from 'vue-star'
-  import {mapGetters} from 'vuex'
+  import {mapGetters, mapMutations} from 'vuex'
   import {resumeSubmit} from '../../../api/resumeSubmit'
+  import {bus} from '../../../common/js/bus'
+  import {SET_RESUME_DATA} from '../../../store/mutations-types';
+  import _ from 'lodash';
+
+
   export default{
     components: {
 //      experience,
       headImgLoad,
       vueStar
+    },
+    mounted() {
+      bus.$on('uploadSuccess', (res) =>{
+        res.headImgUrl = res.headImgUrl.replace(/\\/g, '/');
+        this.formData.headImg = res.headImgUrl
+      })
     },
     data() {
       return {
@@ -148,25 +164,7 @@
             }
           }]
         },
-        formData: {
-          name: '马晓',
-          degree: '专科',
-          school: '广东农工商职业技术学院',
-          job: '前端工程师',
-          age:"20",
-          projectEx: [
-            {
-              timeStart: '2015-04-10',
-              timeEnd: '2015-08-11',
-              name: 'QQ商城',
-              descride: 'QQ商城于2010年3月22日由“QQ会员官方店”升级而来。将此前只有QQ会员才能享受到的低价名牌网购特权向所有QQ用户全面开放，而QQ会员的优惠特权也将进一步升级。2013年3月24日，腾讯电商旗下、业态有些重合的QQ网购和QQ商城将于明日合二为一，新平台将统一以QQ网购的品牌出现'
-            }
-          ],
-          experienceYear: '1年',
-          wantSaraly: '5~7k',
-          videoUrl:'rtmp://live.hkstv.hk.lxdns.com/live/hks',
-          headImg: require('../../../common/image/default_headpic.png')
-        },
+        formData: {},
         degreeList: [
           {
             value: '1',
@@ -195,16 +193,22 @@
       }
     },
     computed: {
-      headImgUrl() {
-//        return this.$store.store.state.resume.formData.headImg;
+
+      ComFormData() {
+        this.formData = _.cloneDeep(this.resumeData);
+      },
+      videoParam() {
+        return {url: this.loginUserInfo.uid}
       },
       getuid() {
         return this.loginUserInfo.uid
       },
       ...mapGetters([
-        'loginUserInfo'
+        'loginUserInfo',
+        'resumeData'
       ])
     },
+
     methods: {
       submit() {
         resumeSubmit({
@@ -236,6 +240,7 @@
 
       },
       addEx() {
+
         this.formData.projectEx.push({
           timeStart: '',
           timeEnd: '',
@@ -245,7 +250,10 @@
       },
       cutEx(index) {
         this.formData.projectEx.splice(index, 1)
-      }
+      },
+      ...mapMutations({
+        'setResumeData':SET_RESUME_DATA
+      })
     }
   }
 </script>

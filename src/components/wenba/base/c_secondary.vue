@@ -1,20 +1,21 @@
 <template>
+  <!--二级评论组件-->
   <div class="reply_contaner fix">
-    <input-reply :hasImg="true" @onSubmit="onClickSubmit" :loadingFlag="loadingFlag"></input-reply>
-    <com_inside :data="listData"></com_inside>
+    <input-reply :hasImg="true" @onSubmit="onClickSubmit" :loadingFlag="loadingFlag" ref="input"></input-reply>
+    <show-seconary :data="listData"></show-seconary>
   </div>
 </template>
 
 <script>
 
-  import Com_inside from '../template/com_inside.vue';
+  import ShowSeconary from '../template/show_seconary.vue';
   import InputReply from '../common/inputMin.vue';
-  import {getReplyComment, sendReplyComment} from '../../../api/question';
+  import {getSecondaryReply, sendSecondaryReply} from '../../../api/question';
   import {mapGetters} from 'vuex';
 
   export default {
     components: {
-      Com_inside,
+      ShowSeconary,
       InputReply
     },
     props: {
@@ -42,7 +43,6 @@
     },
     watch: {
       replyDataAddList(NewValue) {
-        alert("出发了")
         console.log(NewValue)
         this.listData.push(NewValue[0])
       }
@@ -51,7 +51,7 @@
       //用户获取回复评论列表
       _getReplyComment() {
         if(Object.keys(this.params).length !== 0) {
-          getReplyComment(this.params)
+          getSecondaryReply(this.params)
             .then((res) => {
               this.listData = res.data;
             })
@@ -60,16 +60,30 @@
             })
         }
       },
+
+      /**
+       * 发送二级评论 [根据一级评论，发送二级评论]
+       * @param inputValue
+       */
       onClickSubmit(inputValue) {
         let params = Object.assign({}, this.params, {content: inputValue});
         this.loadingFlag = true;
-        sendReplyComment(params).then((res)=> {
-          if(res.result) {
+        sendSecondaryReply(params).then((res)=> {
+          if(res.result == 1) {
             this.listData.push(res.data[0])
-            this.loadingFlag = false;
-          }
-        }).catch(err=> {
 
+            this.$refs.input.clearInput();
+            this.$message('评论成功');
+          }else if(res.result == 2){
+            this.$message({
+              type: 'warning',
+              message: res.msg
+            })
+          }
+          this.loadingFlag = false;
+        }).catch(err=> {
+          alert('出错了'+err)
+          console.log(err)
         })
       }
     }
@@ -81,6 +95,7 @@
   @import "../../../common/scss/ui";
 
   .reply_contaner{
+
     border-top: 1px solid $color-grey-d;
   }
 </style>

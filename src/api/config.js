@@ -1,16 +1,38 @@
 /*统一管理请求地址*/
+/**
+ * 后台服务器地址
+ * */
 const server = 'http://localhost:4000';
 
+/**
+ * [string 登录]
+ * */
 export const url_login = server + '/login';
 
+/**
+ * [string 注册]
+ * */
 export const url_register = server + '/register';
 
-//百度地图密匙
+/**
+ * [String 注销登录]
+ * */
+export const url_cancellation = server + '/cancellation'
+
+/**
+ * [string  百度地图密匙]
+ * */
 export const baiduMapKeyAK = 'hCBcm8H8opRLdC0f6OibbGavC0pne1uc';
 
-//百度地图请求地址
+/**
+ * [string  百度地图请求地址]
+ * */
 export const url_baiduMap = 'http://api.map.baidu.com/geocoder/v2/';
 
+/**
+ * [function 获取经纬度]
+ * @param {object} point [内部有经纬度对象]
+ * */
 export function getSiteParams(point) {
   let _location = `${point.lat}, ${point.lng}`;
   return {
@@ -22,41 +44,101 @@ export function getSiteParams(point) {
   };
 }
 
+/**
+ *  [string 头像上传地址]
+ * */
+export const url_headload = server + '/headLoad';
 
-export const url_companyFormSubmit = './php/companySubmit.php'
+/**
+ * [string 简历表提交地址]
+ * */
+export const url_reusmeSubmit = server + '/resumeSubmit';
 
-export const url_headload = './php/headLoad.php'
+/**
+ * [string 获取简历信息]
+ * */
+export const url_getResumeData = server + '/getResumeData';
 
-export const url_videoload = './php/videoLoad.php'
+export const url_videoload = './php/videoLoad.php';
 
-export const url_reusmeSubmit = './php/resumeSubmit.php';
+/**
+ * [string 发送公司表单信息]
+ * */
+export const url_companyFormSubmit = server + '/companySubmit';
 
-export const url_askQuestionSubmit = './php/askQuestion.php';
+/**
+ * [string 获取标签URL]
+ * */
+export const url_searchTag = server + '/getTag';
 
-export const url_commentOnZan = './php/commentOnZan.php';
+/**
+ * [string 提交问题URL]
+ * */
+export const url_askQuestionSubmit = server + '/saveTopic';
 
+/**
+ * [点赞的地址] [一级评论和二级评论的点赞，用c_type区分， 一级 first 二级 second]
+ * @type {string}
+ */
+export const url_commentOnZan = server + '/zan';
 
 
 //**********************本地测试时使用************************/
-export const url_companyList = '../api/companyListData';
+export const url_companyList = server + '/companyListData';
+// export const url_companyList = '../api/companyListData';
 
-export const url_jobhunterData = '../api/workerInfo';
+/**
+ * [简历首页数据获取]
+ * @type {string}
+ */
+export const url_jobhunterData = server + '/workerInfo';
+// export const url_jobhunterData = '../api/workerInfo';
 
-export const url_searchTag = '../api/searchTag';
+/**
+ * [问吧首页数据加载]
+ * */
+export const url_questionListForWenba = server + '/topicList_all';
 
-export const url_questionListForWenba = '../api/topicList_all';
+/**
+ * [根据标签，获取对应话题的地址]
+ * */
+export const url_questionListForTag = server + '/topicList_tag';
+// export const url_questionListForTag = '../api/topicList_tag';
 
-export const url_replyComment = '../api/replyComment';
+// export const url_questionListForWenba = '../api/topicList_all';
 
-export const url_sendReplyComment = '../api/replySuccess';
+/**
+ * [获取二级评论]
+ * @type {string}
+ */
+export const url_getSecondaryReply = server + '/getSecondaryReply';
 
-export const url_questionDetail = '../api/topicDetail';
 
-export const url_topicReply = '../api/topicReply'
+/***
+ * [发送二级评论]
+ * @type {string}
+ */
+export const url_sendSecondaryReply = server + '/sendSecondaryReply';
 
-export const url_questionListForTag = '../api/topicList_tag'
 
-export const url_getResume = '../api/resumeData';
+/**
+ *[string 话题详细页数据请求]
+ */
+export const url_questionDetail = server + '/topicDetail';
+
+/***
+ * [回复话题的评论，一级评论]
+ * @type {string}
+ */
+export const url_sendTopicReply = server + '/sendTopicReply';
+
+/**
+ * [获取标签信息] [查看标签专属页面时，显示当前标签信息]
+ *
+ */
+export const url_getTagMsg = server + '/getTagMsg';
+
+// export const url_getResume = '../api/resumeData';
 /*************************分割线结束*********************************/
 
 

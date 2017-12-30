@@ -1,5 +1,6 @@
 <template>
   <ul>
+    <!--显示二级评论的组件-->
     <li class="fix" v-for="(item, index) in data">
       <div>
         <span class="avatar f_left">
@@ -13,7 +14,7 @@
           <i>{{index + 1}}楼</i>
           <a href="javascript:;" class="reply" @click="onClickReply(item, index)">回复</a>
           <em class="line"></em>
-          <zan-icon :number="item.c_zanNum" @onclick="onClickZan(item)"></zan-icon>
+          <zan-icon :number="item.c_zanNum" @onclick="onClickZan(item, index)"></zan-icon>
         </aside>
       </div>
       <input-reply
@@ -33,7 +34,7 @@
   import ZanIcon from '../common/zanIcon.vue'
   import InputReply from '../common/inputMin.vue'
   import {addClass} from '../../../common/js/dom'
-  import {sendReplyComment, sendOnZan} from "../../../api/question"
+  import {sendSecondaryReply, sendOnZan} from "../../../api/question"
   import {mapGetters, mapMutations} from 'vuex';
   import {SET_REPLY_DATA} from "../../../store/mutations-types"
   export default {
@@ -67,17 +68,19 @@
       setReceiceInputValue(inputValue) {
         this.receiceInputValue = inputValue;
       },
-      //监听replyInput 组件的按钮点击事件，用户发送http请求到后台。
+      //监听replyInput 组件的按钮点击事件，用户发送http请求到后台。 [根据二级评论回复二级评论]
       onSubmit(data) {
+        console.log(data)
         this.loadingFlag = true;
-        let {RID,UID} = data;
+        let {RID,UID,RIDForeignKey} = data;
+        console.log(RID)
         let params = {
-          RID,
+          RID:RIDForeignKey,
           'UIDOfReply': UID,
           operaUID: this.loginUserInfo.uid,
           content: this.receiceInputValue
         }
-        sendReplyComment(params).then((res)=>{
+        sendSecondaryReply(params).then((res)=>{
           this.setReplyData(res.data)
           this.loadingFlag = false;
           this.inputVisIndex = -1;
@@ -87,12 +90,15 @@
           })
         })
       },
+
       //点击赞图标，用于更新赞数量以及显示动画
       onClickZan(params) {
         if (this.zanClickFlag) {
           return
         }
         let {c_zanNum, RID, TID, UIDOfReply} = params;
+        console.log(params)
+        console.log(c_zanNum);
         c_zanNum = parseInt(c_zanNum);
         params.c_zanNum = c_zanNum + 1;
         this.zanClickFlag = true;
@@ -101,7 +107,8 @@
           RID,
           TID,
           UIDOfReply,
-          operaUID: this.loginUserInfo.uid
+          operaUID: this.loginUserInfo.uid,
+          c_type: 'second'
         };
         sendOnZan(sendParams);
       },
@@ -117,8 +124,6 @@
       ...mapMutations({
         'setReplyData': SET_REPLY_DATA
       })
-
-
     }
   }
 </script>

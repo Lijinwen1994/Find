@@ -149,7 +149,7 @@
         ],
         tagInputValue: '',
         candidateTags: [],
-        nowTagIndex: 0,
+        nowTagIndex: -1,
         VisErrorMsg: false,
         submitLoading: false
 
@@ -181,7 +181,7 @@
       //loadsh的函数防抖，
       getTags:_.debounce(
         function () {
-          getSearchTag(encodeURI(this.tagInputValue)).then((res) => {
+          getSearchTag(this.tagInputValue).then((res) => {
             if (res.result == OK) {
               this.candidateTags = res.data;
             } else if(res.result == NO_FINDED) {
@@ -202,13 +202,16 @@
         let tagValues = [];
         this.selectedTags.forEach(function (tagItem) {
           tagValues.push(tagItem.tag_value);
-        })
+        });
+
         let params = {
           userUid: this.loginUserInfo.uid,
+          userType: this.loginUserInfo.type,
           tagValues: tagValues,
           title: this.title,
           content: this.contentValue
-        }
+        };
+
         this.submitLoading = true;
         sendQuestion(params).then((res) => {
           this.submitLoading = false;
@@ -216,6 +219,11 @@
             this.$message({
               message: '发送成功',
               type: 'success'
+            })
+          }else if(res.result == 2){
+            this.$message({
+              message: res.msg,
+              type:'warning'
             })
           }
         }).catch((err)=> {
@@ -287,7 +295,7 @@
 
         this.inputIndexMoveFlag = false;
         //重置索引
-        this.nowTagIndex = 0;
+        this.nowTagIndex = -1;
       },
       //点击热门标签
       clickHotTag(tag, index) {

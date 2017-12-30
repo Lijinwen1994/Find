@@ -6,13 +6,13 @@
         <nav>
           <ul>
             <li>
-              <a href="javascript:;" @click="toIndex">首页</a>
+              <a href="javascript:;" @click="toIndex">{{navName}}</a>
             </li>
             <li><a href="javascript:;" @click='toWenba'>问吧</a></li>
-            <li><a href="javascript:;">面试直播间</a></li>
+
             <li>
               <el-switch
-                v-model="indexModule"
+                v-model="this.indexModule"
                 on-color="#13ce66"
                 off-color="#87CEEB"
                 on-text='进入企业版'
@@ -26,15 +26,9 @@
       </el-col>
       <el-col :span="10">
         <div class="header-right">
-          <el-input
-            placeholder="搜索"
-            icon="search"
-            v-model="search"
-            :on-icon-click="handleIconClick"
-            class='searchInput'
-          >
-          </el-input>
-
+          <!--搜索框 开始-->
+          <search></search>
+          <!--搜索框 结束-->
           <ul class="userInfoWrap" v-if='!loginUserInfo.name==""'>
             <el-dropdown>
 						  <span class="el-dropdown-link">
@@ -50,7 +44,7 @@
 
                 <el-dropdown-item @click.native='toCompanycreate'
                                   v-if='loginUserInfo.type == COMPANY && loginUserInfo.companyDataSign == NOT_ALREADY'>
-                  创建信息
+                  创建企业信息
                 </el-dropdown-item>
 
                 <el-dropdown-item @click.native='toCompanyInfo'
@@ -60,7 +54,7 @@
               </el-dropdown-menu>
             </el-dropdown>
             <!--<i class="el-icon-menu"></i>-->
-            <li class='userName'>{{ loginUserInfo.name }}</li><el-button type="text" @click.native="cancellation">[注销]</el-button>
+            <li class='userName'>{{ loginUserInfo.name }}</li><el-button type="text" @click.native="Tocancellation">[注销]</el-button>
           </ul>
           <el-button type="primary" class='reglog-btn' v-if='loginUserInfo.name==""' @click='reglogVis'>登录 | 注册
           </el-button>
@@ -78,15 +72,17 @@
   import {mapGetters, mapMutations} from "vuex"
   import * as types from '../../store/mutations-types'
   import {NOT_ALREADY,ALREADY} from "../../common/js/config";
-
-
+  import {cancellation} from '../../api/cancellation'
+  import {emptyObject} from '../../common/js/tool'
+  import _ from 'lodash'
+  import Search from './search.vue'
   export default {
     components: {
-      LogregDialog
+      LogregDialog,
+      Search
     },
     data() {
       return {
-        search: " ",
         //切换开关的宽度
         w: 100,
         //菜单icon名字
@@ -101,30 +97,37 @@
     created() {
 
     },
+
     mounted() {
       bus.$on('closeDialog', () => {
         this.logregDialogVis = false;
       })
-//      let data = this.$store.store.state.company-list.companyData;
-//      this.$store.store.commit("showCompanyData",data);
+
     },
     computed: {
-      routePath() {
-//			console.log(this.$route.path)
+      navName() {
+        return this.indexModule == 1 ? '个人版首页' : '企业版首页';
       },
-//      companyDataSign() {
-//        let sign = this.$store.store.state.baseModule.companyDataSign;
-//        return sign == "true" ? 1 : 2
-//      },
       ...mapGetters([
         'indexModule',
         'loginUserInfo'
       ])
     },
     methods: {
-      cancellation() {
+      /**
+       * [function 注销确认] [确认发送消息]
+       * */
+      Tocancellation() {
         this.$confirm('确认将退出登录').then(()=>{
-          alert('asad')
+          cancellation().then((res)=>{
+            if(res.result == 1) {
+              let emptyUserInfo = emptyObject(_.cloneDeep(this.loginUserInfo));
+              this.setUserInfo(emptyUserInfo);
+              console.log(this.loginUserInfo);
+            }else{
+              this.$message(res.message)
+            }
+          });
         })
       },
       toIndex() {
@@ -135,11 +138,11 @@
             this.setIndexModule(false);
           }
           else {
-            this.$router.push('/jobhunter')
+            this.$router.push('/workerindex')
             this.setIndexModule(true);
           }
         } else {
-          this.$router.push('/jobhunter');
+          this.$router.push('/workerindex');
           this.setIndexModule(true);
         }
       },
@@ -151,13 +154,11 @@
       reglogVis() {
         this.logregDialogVis = !this.logregDialogVis;
       },
-      handleIconClick() {
 
-      },
       //切换首页模式 (个人/企业)
       indexModuleToggle(Boolean) {
-        this.setIndexModule(!this.indexModule)
-        this.$router.push(this.indexModule ? '/jobhunter' : '/company.list')
+        this.setIndexModule(!this.indexModule);
+        this.$router.push(this.indexModule ? '/workerindex' : '/company.list')
       },
       menuIconHover(name) {
         this.menuIconName = name;
@@ -175,7 +176,8 @@
         this.$router.replace("/companydetail")
       },
       ...mapMutations({
-        setIndexModule: types.SET_INDEX_MODULE
+        setIndexModule: types.SET_INDEX_MODULE,
+        setUserInfo: types.SET_LOGIN_USER_INFO,
       })
     },
   }
@@ -188,7 +190,7 @@
     padding: 0;
     height: 60px;
     background-color: $color-theme;
-    overflow: hidden;
+    /*overflow: hidden;*/
     .header-right {
       float: right;
     }
@@ -198,18 +200,7 @@
     .reglog-btn {
       margin-top: 12px;
     }
-    .searchInput {
-      @extend .reglog-btn;
-      width: auto;
-      margin-right: 10px;
-      & input {
-        width: 100px;
-        transition: all .5s;
-      }
-      & input:focus {
-        width: 200px;
-      }
-    }
+
     .userInfoWrap {
       color: #E5E9F2;
       .userName {
@@ -223,7 +214,7 @@
       cursor: pointer;
       font-size: 30px;
     }
-    icon-menu:hover {
+    .icon-menu:hover {
       color: $color-grey;
     }
     .el-dropdown-link {

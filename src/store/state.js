@@ -40,24 +40,24 @@ const state = {
     headImg :  ''
   },
   companyData: {
-    name:"华为",
-    tag_value: '10010',
-    tag_name: '华为',
+    name:"",
+    tag_value: '',
+    tag_name: '',
     foundTime: '',
-    foundFund: '1亿元',
-    financingStage: '不需要融资',
-    isListed: 2,
-    peopleNumber: '10000人以上',
-    siteProv:"广东",
-    siteCity:"广州",
+    foundFund: '',
+    financingStage: '',
+    isListed: "",
+    peopleNumber: '',
+    siteProv:"",
+    siteCity:"",
     point: {
       lat: "39.914850",
       lng:"116.403765"
     },
     address: "北京路十里长街XX号",
     videoUrl: "rtmp://live.hkstv.hk.lxdns.com/live/hks",
-    intro: "华为是全球领先的信息与通信解决方案供应商。我们围绕客户的需求持续创新，与合作伙伴开放合作，在电信网络、企业网络、消费者和云计算等领域构筑了端到端的解决方案优势。我们致力于为电信运营商、企业和消费者等提供有竞争力的 ICT 解决方案和服务，持续提升客户体验，为客户创造最大价值。目前，华为的产品和解决方案已经应用于 140 多个国家，服务全球 1/3的人口。",
-    culture: "企业文化/口号，",
+    intro: "",
+    culture: "",
     headImg: "https://img.kanzhun.com/images/logo/20150418/0d2dbe2a1fb130c913c9a3d6e72296ef.jpg"
   },
   //首页切换 个人/企业

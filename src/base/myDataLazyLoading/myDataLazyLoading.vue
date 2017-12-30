@@ -22,7 +22,6 @@
   export default {
     created() {
       this.$nextTick(() => {
-
         this._getData();
       })
     },
@@ -30,7 +29,6 @@
       this.$nextTick(() => {
         this.onScroll();
       })
-
     },
     props: {
       //每次加载数量，默认为10
@@ -68,12 +66,16 @@
 
         let param = {
           index: this.loadIndex,
-          dataMode: this.dataMode
+          //对应话题标签，全部则默认为all
+          dataMode: this.dataMode,
+          loadNumber: this.loadNumber
         }
 
         getData(this.address, param).then((res) => {
           this.sw = true;
+          console.log(res)
           if (res.data.result == OK) {
+
             this.$emit("getDataSuccess", res.data.data)
           }
           else if (res.data.result == 2) {
@@ -84,11 +86,11 @@
         })
       },
       _calcHeight() {
+        let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
         //可视区域高度+ 滚动高度 == 文档高度
-        if (document.body.scrollTop + window.innerHeight >= document.body.offsetHeight - 20) {
+        if (scrollTop + window.innerHeight >= document.body.offsetHeight - 20) {
           if (this.sw == true && !this.noDatas) {
             this._getData();
-
           }
         }
       },

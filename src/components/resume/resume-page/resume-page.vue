@@ -1,85 +1,107 @@
 <template>
-  <div>
+
     <div class="resume-body">
       <i class="bg-left bg"></i>
       <i class="bg-right bg"></i>
       <div class="headImg">
         <img :src='resumeData.headImg' alt=""/>
       </div>
-      <div class="name">{{resumeData.name}}</div>
-      <division>个人资料</division>
-      <div class="line">
-        <span><i class="iconfont icon-xuexiao-copy"></i>{{resumeData.school}}</span>·
-        <span><i class="iconfont icon-xueli"></i>{{resumeData.degree}}</span>·
-        <span><i class="iconfont icon-nianling"></i>{{resumeData.age}}</span>
-      </div>
-      <div class="line">
-        <span> <i class="iconfont icon-zhiye"></i>{{resumeData.job}}</span>·
-        <span><i class="iconfont icon-gongzuojingyan">{{resumeData.experienceYear}}</i></span>
-      </div>
-      <div class="line">
-        <span><i class="iconfont icon-gongzi"></i>{{resumeData.wantSaraly}}</span>
-      </div>
-      <division>视频</division>
-      <resume-video ref='ck' :rtmp='resumeData.videoUrl' width='700' height='400'></resume-video>
-      <division>项目经历</division>
-      <template v-for='item in resumeData.projectEx'>
-        <div class="proEx">
+      <section v-if="resumeData.name">
+        <div class="name">{{resumeData.name}}</div>
+        <division>个人资料</division>
+        <div class="line">
+          <span><i class="iconfont icon-xuexiao-copy"></i>{{resumeData.school}}</span>·
+          <span><i class="iconfont icon-xueli"></i>{{resumeData.degree | toStringDegree}}</span>·
+          <span><i class="iconfont icon-nianling"></i>{{resumeData.age}}</span>
+        </div>
+        <div class="line">
+          <span> <i class="iconfont icon-zhiye"></i>{{resumeData.job}}</span>·
+          <span><i class="iconfont icon-gongzuojingyan">{{resumeData.experienceYear}}</i></span>
+        </div>
+        <div class="line">
+          <span><i class="iconfont icon-gongzi"></i>{{resumeData.wantSaraly}}</span>
+        </div>
+        <!--<division>视频</division>-->
+        <!--<resume-video ref='ck' :rtmp='resumeData.videoUrl' width='700' height='400'></resume-video>-->
+        <division>项目经历</division>
+        <template v-for='item in resumeData.projectEx'>
+          <div class="proEx">
 					<span>
 						<div class="proName">{{item.name}}</div>
-						<time>{{item.timeStart}} —— {{item.timeEnd}}</time>
+						<time>{{item.timeStart | timeString}} —— {{item.timeEnd|timeString}}</time>
 					</span>
-          <div class="intro">{{item.descride}} </div>
-        </div>
-      </template>
+            <div class="intro">{{item.descride}} </div>
+          </div>
+        </template>
+      </section>
+      <section v-else>
+        没有数据，请点击右上角[编辑]按钮增加信息
+      </section>
+
     </div>
 
-  </div>
 </template>
 
 <script>
   import division from '../../../base/division/division.vue'
   import resumeVideo from "../../../base/ckplayer/ckplayer.vue"
-  import {mapGetters} from 'vuex'
+  import {mapGetters,mapMutations} from 'vuex'
   import {getResumeData} from '../../../api/getResume'
+  import {SET_RESUME_DATA} from '../../../store/mutations-types';
 
   export default {
     components: {
       division,
       resumeVideo
     },
+    filters:{
+      toStringDegree(value) {
+        let degreeArr = [0,'初中','高中','大专','本科','研究生','博士'];
+        return  value = degreeArr[Number(value)]
+      },
+      timeString(value ) {
+        let i = value.indexOf('T');
+        return value.substring(0,i);
+      }
+    },
     created() {
-      getResumeData(this.loginUserInfo).then((data)=>{
-        this.resumeData = data
-      })
+      this._getResumeData();
     },
     data() {
       return {
-        resumeData: {}
       }
     },
 
     computed: {
-      headImgUrl() {
-//        return this.$store.store.state.resume.resumeData.headImg;
-      },
-      rtmp() {
-//        return this.$store.store.state.ck.rtmp;
-      },
+//      timeString(value ) {
+//        let i = value.indexOf('T');
+//        return value.substring(0,i);
+//      },
       ...mapGetters([
-        'loginUserInfo'
+        'loginUserInfo',
+        'resumeData'
       ])
     },
     methods: {
-      paly() {
+      _getResumeData() {
+        this.$nextTick(()=> {
+          getResumeData(this.loginUserInfo).then((sourceData)=>{
+            console.log(sourceData);
+            let data = sourceData[0];
+            let {projectEx} = data;
+            if(!Array.isArray(projectEx)) {
+              projectEx = JSON.parse(projectEx);
+            }
 
-      }
+            data.projectEx = projectEx;
+            this.setResumeData(data);
+          })
+        })
+      },
 
-    },
-    mounted() {
-//      let {videoUrl} = this.resumeData;
-//      this.$store.store.commit('initCK',{'rtmp': videoUrl});
-      this.$refs.ck.play()
+      ...mapMutations({
+        'setResumeData':SET_RESUME_DATA
+      })
     }
   }
 </script>

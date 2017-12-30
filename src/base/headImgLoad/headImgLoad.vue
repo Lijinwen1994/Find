@@ -1,14 +1,12 @@
 <template>
   <my-upload field="headImg"
-             @crop-success="cropSuccess"
-             @crop-upload-success="cropUploadSuccess"
+             @crop-upload-success="uploadSuccess"
              @crop-upload-fail="cropUploadFail"
-             :value=true
-             :width="300"
-             :height="300"
+
+             :width="100"
+             :height="100"
              :url=url
              :params="params"
-             img-format="png"
              @input='offLoadImg'></my-upload>
 </template>
 
@@ -16,6 +14,8 @@
   import {url_headload} from "../../api/config"
   import myUpload from 'vue-image-crop-upload/upload-2.vue';
   import {mapGetters} from 'vuex'
+  import {bus} from '../../common/js/bus'
+
   export default {
     data() {
       return {
@@ -37,27 +37,20 @@
           type: this.loginUserInfo.type
         }
       },
-//      loadVis() {
-//        if(this.target == "personal"){
-////          return this.$store.store.state.resume.loadVisible
-//        }else{
-////          return this.$store.store.state.company.loadVisible
-//        }
-//      },
       ...mapGetters([
         'loginUserInfo'
       ])
     },
     methods: {
-      cropSuccess(imgDataUrl,field) {
-
-      },
-      cropUploadSuccess(headImgUrl, field) {
-        if(this.target == "personal"){
-          this.$store.store.commit("setHeadImg", headImgUrl)
-        }else{
-          this.$store.store.commit("setHeadImgCom", headImgUrl)
-        }
+      uploadSuccess(res) {
+//        if(this.target == "personal"){
+//
+//        }else{
+//          this.$store.store.commit("setHeadImgCom", headImgUrl)
+//        }
+        bus.$emit('uploadSuccess', res)
+        console.log('上传成功')
+        console.log(res)
 
       },
       cropUploadFail(status, field) {

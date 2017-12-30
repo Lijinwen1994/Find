@@ -1,27 +1,33 @@
 <template>
   <div class="page-container">
     <div class="banner"></div>
+
     <div class="banner-content">
+      <el-button class="returnBtn" @click="returnListPage">返回</el-button>
       <img :src="showCompanyData.headImg" alt=""/>
       <div class="name">{{showCompanyData.name}}</div>
       <div class="profile">{{showCompanyData.siteCity}} | {{showCompanyData.peopleNumber}}</div>
-      <div class="intro">{{showCompanyData.intro}}</div>
-    </div>
-    <nav class="companyNav">
+      <div class="intro">{{showCompanyData.intro | introMoit}} <el-tag class="more" v-if="moreBtnVis" @click.native="clickMoreBtn">更多</el-tag></div>
 
+    </div>
+    <!--导航组件 开始-->
+    <nav class="companyNav">
     </nav>
+    <!--导航组件 结束-->
     <div class="c-content-body">
+
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="介绍" name="first">
           <intro :data='showCompanyData'></intro>
         </el-tab-pane>
         <el-tab-pane label="问吧" name="second">
+
           <com_list_tag :dataMode="showCompanyData.tag_value"></com_list_tag>
         </el-tab-pane>
-        <el-tab-pane label="招聘" name="third">角色管理</el-tab-pane>
       </el-tabs>
 
     </div>
+    <el-dialog :visible="dialogVis" :before-close="closeDialog" title="详细">{{showCompanyData.intro}}</el-dialog>
   </div>
 </template>
 
@@ -35,21 +41,47 @@
       Intro,
       Com_list_tag
     },
+    created() {
+     this.showCompanyData =  JSON.parse(localStorage.getItem('companyShowData'));
+    },
+    filters: {
+      introMoit(value) {
+        //小于
+        if(value.length < 200) {
+          return value
+        }else{
+          return value.substring(0,200)
+        }
+      }
+    },
     data() {
       return {
-        activeName: 'first'
+        activeName: 'first',
+        dialogVis:false,
+        showCompanyData: {}
       };
     },
     computed: {
-      ...mapGetters([
-        'showCompanyData'
-      ])
+      moreBtnVis() {
+        return this.showCompanyData.intro.length > 200
+      },
+//      ...mapGetters([
+//        'showCompanyData'
+//      ])
     },
     methods: {
+      closeDialog() {
+        this.dialogVis = false;
+      },
+      clickMoreBtn() {
+        this.dialogVis = true;
+      },
       handleClick() {
+      },
+      returnListPage() {
+        this.$router.push({path:'company.list'})
       }
-    },
-    props: {}
+    }
   }
 </script>
 
@@ -63,6 +95,12 @@
     z-index: 100;
     height:400px;
     margin-top: 20px;
+    & .returnBtn{
+      float: right;
+    }
+    & .more{
+      cursor: pointer;
+    }
     & img {
       width: 150px;
     }

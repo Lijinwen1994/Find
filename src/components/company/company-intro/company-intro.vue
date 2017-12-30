@@ -1,11 +1,11 @@
 <template>
   <div>
-    <division>视频</division>
+    <division>公司信息</division>
     <div class="wrap">
       <div class="infoWrap">
         <ul>
-          <li>成立时间： {{data.foundTime}}</li>
-          <li>注册资金： {{data.foundFund}}</li>
+          <li>成立时间： {{data.foundTime | timeString}}</li>
+          <li>注册资金： {{data.foundFund}} 万元</li>
           <li>融资情况： {{data.financingStage}}</li>
           <li>是否上市：
             <span v-if='data.isListed == 1'>是</span>
@@ -18,14 +18,14 @@
         </ul>
       </div>
       <div class="videoWrap">
-        <ckplayer :rtmp='data.videoUrl' ref='ck' width='500' height='350'></ckplayer>
+        <!--<ckplayer :rtmp='data.videoUrl' ref='ck' width='500' height='350'></ckplayer>-->
       </div>
     </div>
     <division>地址</division>
     <div class="address"><i class="iconfont icon-dingwei"></i> {{callbackAddress}}</div>
     <div class="mapContainer">
-      <baidu-map class="map" :center="data.point" :zoom="15">
-        <bm-marker :position="data.point" animation="BMAP_ANIMATION_BOUNCE">
+      <baidu-map class="map" :center="JSON.parse(data.point)" :zoom="15">
+        <bm-marker :position="JSON.parse(data.point)" animation="BMAP_ANIMATION_BOUNCE">
         </bm-marker>
       </baidu-map>
     </div>
@@ -41,46 +41,50 @@
   import baidumap from "../company-map/company-map.vue"
   import jsonp from 'common/js/jsonp'
   import {getSiteParams, url_baiduMap} from '../../../api/config';
-  import {mapGetters} from 'vuex'
   export default {
     components: {
       division,
       ckplayer,
       baidumap
     },
-    data() {
-      return {
-        callbackAddress: ""
+    filters: {
+      timeString(value ) {
+        let i = value.indexOf('T');
+        return value.substring(0,i);
       }
     },
-    computed: {
-      ...mapGetters([
-        'showCompanyData'
-      ])
+    created() {
+      this.getSite();
+    },
+    mounted() {
+
+    },
+    data() {
+      return {
+        callbackAddress: "",
+        showCompanyData: {}
+      }
     },
     props: {
       data: {
         required: true
       }
     },
-    created() {
-      this.getSite();
-    },
+
     methods:{
       //向百度请求地址
       getSite() {
-        console.log(this.showCompanyData.point)
-        let params = getSiteParams(this.showCompanyData.point);
+        this.showCompanyData = JSON.parse(localStorage.getItem('companyShowData'));
+        let params = getSiteParams(JSON.parse(this.showCompanyData.point));
         jsonp(url_baiduMap, params).then((res) => {
           this.callbackAddress = res.result.formatted_address;
-          console.log(this.callbackAddress)
         })
       },
     },
     mounted() {
-      this.$nextTick(() => {
-        this.$refs.ck.play();
-      })
+//      this.$nextTick(() => {
+//        this.$refs.ck.play();
+//      })
     }
   }
 </script>

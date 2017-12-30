@@ -65,7 +65,7 @@
 
 
 <script>
-  import {mapMutations} from 'Vuex'
+  import {mapMutations,mapGetters} from 'Vuex'
   import {sendRegister} from '../../api/register'
   import {login} from '../../api/login'
   import {OK, PASS_ERROR, USER_NOT_EXIST} from "../../common/js/config"
@@ -120,6 +120,7 @@
       }
     },
     computed: {
+      ...mapGetters(['loginUserInfo'])
     },
     methods: {
       clearInput() {
@@ -196,6 +197,7 @@
 //              }
               //关闭弹窗，使用eventBus
               bus.$emit('closeDialog');
+              history.go(0);
             }
 
             else if(res.result == 2) {
@@ -216,7 +218,6 @@
       },
       ...mapMutations({
         setUserInfo: types.SET_LOGIN_USER_INFO,
-
         setCompanyData: types.SET_COMPANY_DATA
       })
     }

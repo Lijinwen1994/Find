@@ -1,7 +1,9 @@
 <template>
   <div class="page-container">
+    <!--触发计算函数 开始-->
+    <i v-if="comCompangDate"></i>
+    <!--触发计算函数 结束-->
     <div class="header"></div>
-
     <div class="c-mainbody">
       <div class="sider">
         <div class="headImg" @click='onImgLoad(true)'>
@@ -102,15 +104,16 @@
       </div>
       <div class="right">
 
-        <division>视频上传</division>
-        <el-upload
-          class="upload-video"
-          :action=url_videoload
-          :on-success="videoloadSuccess"
-          :data='params'>
-          <el-button size="small" type="primary">点击上传</el-button>
-          <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-        </el-upload>
+        <!--<division>视频上传</division>-->
+        <!--<el-upload-->
+          <!--class="upload-video"-->
+          <!--:action=url_videoload-->
+          <!--:on-success="videoloadSuccess"-->
+          <!--:data='params'>-->
+          <!--<el-button size="small" type="primary">点击上传</el-button>-->
+          <!--<div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>-->
+        <!--</el-upload>-->
+
         <division>详细地址</division>
         <el-input v-model='formData.address' @change='InputAddress'>
           <template slot="prepend">地址</template>
@@ -118,9 +121,11 @@
         <hr/>
         <p></p>
         <div class="map-wrap">
+
+
           <label>地区：<input v-model="location"></label>
           <label>关键词：<input v-model="keyword"></label>
-          <baidu-map class="bm-view" center="formData.point" :zoom="15">
+          <baidu-map class="bm-view" center="formData.point" :zoom="15" >
             <bm-view class="bm-view"></bm-view>
             <bm-local-search :keyword="keyword" :auto-viewport="true" :location="location" @infohtmlset='searchSite'
                              :selectFirstResult="true"></bm-local-search>
@@ -132,53 +137,63 @@
           </baidu-map>
         </div>
       </div>
+
     </div>
     <head-img-load target="company" v-if='loadVis' @offLoadImg="onImgLoad"></head-img-load>
   </div>
 </template>
 
 <script>
-  //	import {BaiduMap,BmMarker,BmView,BmLocalSearch,BmAutoComplete } from 'vue-baidu-map'
-  //	import BaiduMap from 'vue-baidu-map'
-
 
   import division from "../../../base/division/division.vue";
   import headImgLoad from '../../../base/headImgLoad/headImgLoad';
-  import {mapGetters} from 'vuex';
+  import {mapGetters, mapMutations} from 'vuex';
   import {allCity} from '../../../common/params/allCity';
   import {provs} from '../../../common/params/provs';
   import {companyFormSubmit} from '../../../api/companyFormSubmit';
   import {url_videoload} from "../../../api/config"
   import {throttle} from '../../../common/js/throttle'
+  import _ from 'lodash';
+  import {OK} from '../../../common/js/config'
+  import {bus} from '../../../common/js/bus'
+
   export default {
     components: {
       headImgLoad,
       division
+//      BaiduMap
+//      MyBaiduMap
     },
-
+    mounted() {
+      bus.$on('uploadSuccess', (res) =>{
+        res.headImgUrl = res.headImgUrl.replace(/\\/g, '/');
+        this.formData.headImg = res.headImgUrl
+      })
+    },
     data() {
       return {
         url_videoload: url_videoload,
         provs: provs,
-        formData:{
-          name:"",
-          foundTime: '',
-          foundFund: '',
-          financingStage: '',
-          isListed: 2,
-          peopleNumber: '',
-          siteProv:"",
-          siteCity:"",
-          point: {
-            lat: "39.914850",
-            lng:"116.403765"
-          },
-          address: "",
-          videoUrl: "rtmp://live.hkstv.hk.lxdns.com/live/hks",
-          intro: "",
-          culture: "",
-          headImg: "http://scimg.jb51.net/allimg/150811/14-150Q1142KAF.jpg"
-        },
+        formData:{},
+//        formData:{
+//          name:"aa",
+//          foundTime: '',
+//          foundFund: '',
+//          financingStage: '',
+//          isListed: 2,
+//          peopleNumber: '',
+//          siteProv:"",
+//          siteCity:"",
+//          point: {
+//            lat: "39.914850",
+//            lng:"116.403765"
+//          },
+//          address: "",
+//          videoUrl: "rtmp://live.hkstv.hk.lxdns.com/live/hks",
+//          intro: "",
+//          culture: "",
+//          headImg: "http://scimg.jb51.net/allimg/150811/14-150Q1142KAF.jpg"
+//        },
         location: "北京",
         keyword: "天安门",
         address: "",
@@ -257,6 +272,9 @@
       }
     },
     computed: {
+      comCompangDate() {
+        this.formData = _.cloneDeep(this.companyData);
+      },
       params() {
         return {
           uid: this.loginUserInfo.uid,
@@ -264,7 +282,8 @@
         }
       },
       ...mapGetters([
-        'loginUserInfo'
+        'loginUserInfo',
+        'companyData'
       ])
     },
     methods: {
@@ -302,13 +321,17 @@
           type: this.loginUserInfo.type
         };
         companyFormSubmit(payload).then((res) => {
+          console.log(res.result);
           if (res.result == OK) {
             this.$notify.success({
               title: '恭喜',
               message: "公司资料上传成功"
             })
           }
+        }).catch((err)=>{
+          console.log(err)
         })
+
       },
       //显示关闭图片上传模块
       onImgLoad(flag) {

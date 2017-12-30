@@ -1,4 +1,5 @@
 <template>
+  <!--话题详细页，头部组件-->
   <section class="topic_profile">
     <div class="topic_detail_box">
       <div class="question_tags">

@@ -1,4 +1,5 @@
 <template>
+  <!--详细页 一级评论模块-->
   <section class="reply_detail_item">
     <div class="public_userinfo">
       <dl class="fix">
@@ -15,6 +16,7 @@
         </dd>
       </dl>
     </div>
+
     <article>
       {{data.c_content}}
     </article>
@@ -34,7 +36,7 @@
 <script>
   import CommentIcon from '../common/commentIcon.vue'
   import ZanIcon from '../common/zanIcon.vue'
-  import comment from '../base/comment.vue'
+  import comment from '../base/c_secondary.vue'
   import {mapGetters, mapMutations} from 'vuex'
   import * as types from '../../../store/mutations-types'
   import {addClass} from '../../../common/js/dom'
@@ -105,7 +107,8 @@
           RID,
           TID,
           UIDOfReply: UID,
-          operaUID: this.loginUserInfo.uid
+          operaUID: this.loginUserInfo.uid,
+          c_type: 'first'
         };
 
         sendOnZan(sendParams);

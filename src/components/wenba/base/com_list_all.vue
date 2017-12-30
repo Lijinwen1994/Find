@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!--加载问吧首页的信息。请求放在了我的滚动加载插件中-->
     <my-lazy-load-info
       :backendAddress="url_List"
       :loadNumber="load_number"
@@ -18,7 +19,7 @@
 <script>
   import myLazyLoadInfo from '../../../base/myDataLazyLoading/myDataLazyLoading.vue';
   import {url_questionListForWenba} from '../../../api/config';
-  import Com_wenbaIndex from '../template/com_wenbaIndex.vue';
+  import Com_wenbaIndex from '../template/com_topicAndReply.vue';
   import {thinArr} from '../../../common/js/tool';
   import {EVERY_LOAD_NUMBER} from "../../../common/js/config";
 
@@ -38,6 +39,7 @@
     methods: {
       //用于接收myLazyLoadInfo组件异步获取的数据。并更新questionsList的数据，以更新 com_wenba-index组件
       addData(data) {
+        console.log(data)
         this.questionsList.unshift(data);
         //扁平化二维数组
         this.questionsList = thinArr(this.questionsList)
@@ -45,6 +47,7 @@
 
     },
     beforeDestroy() {
+      //clear scroll事件
       this.$refs.lazy.remove();
     }
   }

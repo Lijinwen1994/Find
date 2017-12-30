@@ -1,13 +1,18 @@
 <template>
+  <!--话题详细页-->
   <div class="page-container">
     <Topic :data="topicData"></Topic>
     <div class="divition">
       <p>{{counter}}个回答</p>
     </div>
-    <div class="reply_list">
+    <div class="reply_list"  v-if="replyDatas.length">
       <template v-for="(item, index) in replyDatas">
         <com_detail :data="item" :index="index"></com_detail>
       </template>
+
+    </div>
+    <div v-else="!replyDatas.length" class="noReply">
+      没有评论，等你来回复~
     </div>
     <div class="divition"></div>
     <input-reply @onSubmit="onsubmit" :loadingFlag="loadingFlag" ref="input"></input-reply>
@@ -59,7 +64,7 @@
           //准备回复评论的发送数据
           let {TID} = this.topicData;
           this.replyParams = Object.assign({}, {TID}, {operaUID:this.loginUserInfo.uid});
-          console.log(this.replyParams)
+
 
         })
       },
@@ -72,14 +77,24 @@
             content:textValue
           }
         )
+
         sendTopicReply(this.replyParams).then((res) => {
+          if(res.result == 1) {
+
+            this.replyDatas.push(res.data);
+            this.$refs.input.clear();
+            this.$message({
+              type: 'success',
+              message: '回复成功'
+            })
+          }
+          else if(res.result == 2) {
+            this.$message({
+              type: 'warning',
+              message: res.msg
+            })
+          }
           this.loadingFlag = false;
-          this.replyDatas.push(res.data);
-          this.$refs.input.clear();
-          this.$message({
-            type: 'success',
-            message: '回复成功'
-          })
         })
 
       }
@@ -104,5 +119,8 @@
       border-top: 1px solid $color-grey;
     }
     padding: 30px 30px 0 30px;
+  }
+  .noReply{
+    padding: 20px 30px;
   }
 </style>
