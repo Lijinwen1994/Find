@@ -8,6 +8,7 @@ const fs = require('fs');
  * @return []
  * */
 module.exports = function (files) {
+  console.log(files[0]);
   let newName = files[0].path + pathLib.parse(files[0].originalname).ext;
   return new Promise((resolve, reject) =>{
     fs.rename(files[0].path, newName, function (err) {
@@ -18,6 +19,4 @@ module.exports = function (files) {
       }
     })
   })
-
-
 }

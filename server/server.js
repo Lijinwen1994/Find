@@ -6,9 +6,6 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const expressStatic =  require('express-static');
 const cors = require('cors');
-const formidable = require('express-formidable');
-const path = require('path');
-const staticCache = require('express-static-cache');
 
 
 const app = express();
@@ -37,11 +34,14 @@ var corsOptions = {
   //这一项是为了跨域专门设置的
 }
 app.use(cors(corsOptions))
-//设置跨域
 
-
-var keys = [];
+//设置cookie,里面一串数字是cookie签名的秘钥，设置后就不要改动了。能知道cookie修改过。
 app.use(cookieParser('sdsfgsdixchuifhsaf'));
+
+//配置session， keys属性是加密的。同城由一个数组，可以是很大的数组。
+//这里使用随机数进行生成了长度是10万个的数组秘钥数组，可以增加劫持session的难度。
+//maxage这是session在浏览器的时间保存期限。
+var keys = [];
 (function () {
   for(var i = 0; i < 100000; i++) {
     keys[i] = 'a_' + Math.random();
@@ -55,7 +55,7 @@ app.use(cookieParser('sdsfgsdixchuifhsaf'));
 
 
 
-//
+//获取multlpart/form-data 类型的文件。
 // any() 表示接受任何文件， single(‘表单name’)接受一个指定formname文件。dest指定上传的文件保存在哪里
 app.use( multer({dest: './static/upload'}).any());
 // app.use(formidable({
@@ -170,4 +170,6 @@ app.use('/companyListData', require('./route/compamy/s_getCompanyList')());
 /**
  * [静态资源]
  * */
-app.use(expressStatic("./static"));
+app.use(expressStatic("./static",{
+  maxAge: '24h'
+}));

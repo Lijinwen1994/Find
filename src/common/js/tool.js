@@ -1,3 +1,6 @@
+var arr = [1,2,3,[4,5,[6,7,8]]]
+
+
 //多维数组扁平化
 export function thinArr(arr) {
   return arr.reduce((a,b)=> {

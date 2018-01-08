@@ -9,23 +9,15 @@ const libs = require('../../libs/common');
  * */
 module.exports = function () {
   let router = express.Router();
-
   router.post("/", (req, res) => {
     //有自动登录的sessionID
     if(req.session['avoidLoginKey']){
-      console.log('执行session')
-      console.log(req.session['avoidLoginKey'])
       var {loginName, loginPass, type} =  req.session['avoidLoginKey'];
-
     }else{
       //没有自动登录的sessionID
-      console.log('手动登录')
       var {loginName, loginPass, type, saveFlag} = req.body;
       loginPass = libs.md5(loginPass)
     }
-    console.log(loginName)
-    console.log(loginPass)
-
     if(loginName == null || loginPass == null) {
       return;
     }
@@ -60,8 +52,6 @@ module.exports = function () {
           //如果没有自动登录的sessionID，就设置session
           if (!req.session['avoidLoginKey'] && saveFlag) {
             req.session['avoidLoginKey'] = {loginName: userName, loginPass:password, type, UID};
-            console.log('session设置成功')
-            console.log(req.session['avoidLoginKey']);
           }
 
           res.status(200).send(Object.assign({}, result, payload));

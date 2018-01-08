@@ -1,0 +1,28 @@
+{
+  "apps:": [
+    {
+      "name": "find",
+      "script": "./server/server.js",
+      "env":{
+        "COMMON_VARIABLE": "true"
+      },
+      "env_production": {
+        "NODE_ENV":"production"
+      }
+    }
+  ],
+  "deploy": {
+    "production": {
+      "user" : "root",
+      "host" :["120.79.155.38"],
+      "port": "39999",
+      "ref" : "origin/master",
+      "repo": "git@github.com:Lijinwen1994/find.git",
+      "path": "/www",
+      "ssh_options": "StrictHostKeyChecking=no",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
