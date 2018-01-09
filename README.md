@@ -42,6 +42,7 @@ methods: {
 * 使用ES2015语法 `promise`， `async/await`解决express回调嵌套的问题
 * 鼠标滚动加载插件， 用于公司，个人简历信息，问吧话题加载。避免一次加载全部数据
 * 开启强制预解析：`<meta http-equiv='x-dns-prefetch-control' content='on'>` 在高级浏览器中，a标签默认打开了dns预解析，但在https中，浏览器默认关闭预解析，这句话就是强制打开预解析
+* 选用iconfont 矢量图作为图标减少http请求。
 ## 还可以进行的优化
 * vue-ssr 服务器渲染，解决spa首屏加载慢，以及SEO问题
 * 对于支持webp的浏览器，可将图片转成webp格式， 方案可以是 加载一段base64格式的webp图片，并判断图片宽高的方案进行浏览器嗅探
