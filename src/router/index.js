@@ -13,8 +13,11 @@ const WorkerIndex = () => import('../components/jobhunter/workerIndex.vue');
 const ShowResume = () => import('../components/resume/resume-show/resume-show.vue');
 Vue.use(Router)
 
+
+
 export default new Router({
-  // mode:'history',
+  mode: 'history',
+  // base:'/find/',
   routes: [
     {
       path: '/',
@@ -31,7 +34,7 @@ export default new Router({
     },
     {
       path: '/resumeShow',
-      component:ShowResume
+      component: ShowResume
     },
     {
       path: '/company.page',

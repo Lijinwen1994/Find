@@ -5,7 +5,6 @@
     <i v-if="dataMode !== 'all'">
       您当前浏览的是【<a href="javascript:;">{{nowTag}}</a>】相关话题
     </i>
-
     <keep-alive>
       <com_list_all v-if="pathParamsIsAll"></com_list_all>
       <com_list_tag v-else :dataMode="dataMode"></com_list_tag>

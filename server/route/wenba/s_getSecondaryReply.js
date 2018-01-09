@@ -9,8 +9,6 @@ module.exports = function () {
   const router = express.Router();
 
   router.use('/', (req, res) => {
-    console.log('获取二级评论')
-    console.log(req.query);
     let {RID, operaUID} = req.query;
     let SQL = `SELECT 
 replys_of_replys_table.RORID AS RID,

@@ -8,7 +8,7 @@
         <li :data-tag_value="item.tag_value">[{{item.tag_name}}]</li>
       </template>
     </ul>
-    <h2 class="title">
+    <h2 class="topicTitle">
       <a href="javascript:;" @click="onClickTitle(datas.TID)">{{datas.title}}</a>
       <div class="reply_number f_right">
         <!--<a href="javascript:;">{{datas.replyNum}}个回复</a>-->
@@ -153,6 +153,7 @@
         sendOnZan(sendParams);
       },
       onClickTitle(TID) {
+        this.$router.replace("/");
         this.$router.push({
           path: `/wenba/${TID}`
         });
@@ -187,12 +188,13 @@
         margin-right: 20px;
       }
     }
-    .title {
-      font-weight: normal;
+    .topicTitle {
+      font-weight: 500;
+
       width: 100%;
       & > a {
         font-size: $font-large-xxxx;
-        color: $color-text-ll;
+        color: $color-purple;
       }
       .reply_number {
 

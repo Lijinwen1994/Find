@@ -44,7 +44,7 @@
   }
 </script>
 
-<style rel='stylesheet/scss' lang='scss'>
+<style rel='stylesheet/scss' lang='scss' scoped>
   @import "../../../common/scss/common";
   @import "../../../common/scss/ui";
   @import "../../../common/scss/variable";

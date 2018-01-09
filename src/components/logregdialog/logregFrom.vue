@@ -243,9 +243,17 @@
   .login{
     float: left;
     margin: 20px 50px 0;
-    width: 350px;
+    /*margin: 20px auto;*/
+    width:350px;
   }
 
+  @media (max-width: 1367px){
+    .register,
+    .login{
+      margin: 20px 25px 0;
+      max-width:320px !important;
+    }
+  }
   .container{
     width: 1000px;
     overflow: hidden;

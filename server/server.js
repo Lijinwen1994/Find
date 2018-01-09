@@ -141,7 +141,7 @@ app.use('/sendTopicReply', require('./route/wenba/s_sendTopicReply')());
 app.use('/getSecondaryReply', require('./route/wenba/s_getSecondaryReply')());
 
 /**
- * [获取二级评论]
+ * [回复二级评论]
  * */
 app.use('/sendSecondaryReply', require('./route/wenba/s_sendSecondaryReply')());
 

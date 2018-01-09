@@ -1,6 +1,7 @@
 <template>
-  <!--详细页 一级评论模块-->
+  <!--话题详细页 一级评论模块-->
   <section class="reply_detail_item">
+
     <div class="public_userinfo">
       <dl class="fix">
         <dt class="f_left fix">
@@ -122,7 +123,7 @@
 
 <style rel='stylesheet/scss' lang='scss' scoped>
   @import "../../../common/scss/variable";
-  /*@import "../../../common/scss/common";*/
+  @import "../../../common/scss/common";
   /*@import "../../../common/scss/ui";*/
   .reply_detail_item{
     .public_userinfo{
@@ -138,6 +139,9 @@
           p{
             padding:0;
             margin:0;
+          }
+          time{
+            color: $color-text-d;
           }
         }
 

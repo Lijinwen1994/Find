@@ -4,6 +4,9 @@
  * */
 const server = 'http://localhost:4000';
 
+  //打包上线地址
+// const server = 'http://www.lijinwen.cn:4000';
+
 /**
  * [string 登录]
  * */

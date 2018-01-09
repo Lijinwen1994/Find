@@ -54,7 +54,7 @@
   }
 </script>
 
-<style>
+<style rel='stylesheet/scss' lang='scss' scoped>
 
   .title{
     height: 40px;
